@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="peng.zhi.liu.mapper.DeptMapper">
+    <delete id="deleteByIdMapper">
+        delete from dept where id = ${id}
+    </delete>
+<!--    查询所有部门-->
+    <select id="selectAllDeptMapper" resultType="peng.zhi.liu.pojo.Dept">
+        select * from dept order by update_time;
+    </select>
+</mapper>
