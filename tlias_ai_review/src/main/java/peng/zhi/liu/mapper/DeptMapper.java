@@ -11,4 +11,10 @@ public interface DeptMapper {
     public List<Dept> selectAllDeptMapper();
     //删除部门
     public void deleteByIdMapper(Integer id);
+    //添加部门
+    public void addDeptMapper(Dept dept);
+    //根据ID查询部门信息
+    public Dept selectByIdMapper(Integer id);
+    //修改部门
+    public void modifyDeptMapper(Dept dept);
 }

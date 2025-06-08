@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="peng.zhi.liu.mapper.EmpMapper">
+<!--    添加员工基本信息-->
+    <insert id="addEmpBasicMapper" useGeneratedKeys = "true" keyProperty = "id">
+        insert into emp(username, name,gender, job, salary ,phone , image, entry_date, dept_id, create_time, update_time)
+        values(#{username},#{name},#{gender},#{job},#{salary},#{phone},#{image},#{entryDate},#{deptId},#{createTime},#{updateTime})
+    </insert>
+
+    <!--    分页查询员工-->
+    <select id="selectEmpPageMapper" resultType="peng.zhi.liu.pojo.Emp">
+        select emp.id, username, emp.name, gender, job, salary, image, entry_date, dept_id, emp.create_time, emp.update_time,dept_id
+        from  emp left join dept on emp.dept_id = dept.id
+        <where>
+            <if test="name!=null and name!=''">emp.name like concat('%',#{name},'%')</if>
+            <if test="gender!=null">and gender = #{gender}</if>
+            <if test="begin!=null and end!=null">and entry_date between #{begin} and #{end}</if>
+        </where>
+        order by emp.update_time desc
+    </select>
+
+<!--         根据ID查询员工的基本信息-->
+    <select id="selectEmpByIdMapper" resultType="peng.zhi.liu.pojo.Emp">
+         select emp.* from emp where id = #{id}
+    </select>
+
+    <!--    批量删除员工-->
+    <delete id="deleteEmpMapper">
+    delete from emp where id in
+        <foreach collection="ids" item="id" separator="," open="(" close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

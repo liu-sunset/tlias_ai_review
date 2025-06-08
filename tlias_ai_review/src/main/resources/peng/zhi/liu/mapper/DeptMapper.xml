@@ -3,11 +3,24 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="peng.zhi.liu.mapper.DeptMapper">
+<!--    添加部门-->
+    <insert id="addDeptMapper">
+        insert into dept(name, create_time, update_time) values(#{name},#{createTime},#{updateTime})
+    </insert>
+<!--    修改部门-->
+    <update id="modifyDeptMapper">
+        update dept set name = #{name},update_time = #{updateTime} where id = #{id}
+    </update>
+    <!--    根据ID删除部门-->
     <delete id="deleteByIdMapper">
-        delete from dept where id = ${id}
+        delete from dept where id = #{id}
     </delete>
 <!--    查询所有部门-->
     <select id="selectAllDeptMapper" resultType="peng.zhi.liu.pojo.Dept">
-        select * from dept order by update_time;
+        select * from dept order by update_time desc;
+    </select>
+<!--    根据ID查询部门-->
+    <select id="selectByIdMapper" resultType="peng.zhi.liu.pojo.Dept">
+        select * from dept where id = #{id}
     </select>
 </mapper>
