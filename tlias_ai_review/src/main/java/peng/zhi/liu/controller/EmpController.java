@@ -2,6 +2,7 @@ package peng.zhi.liu.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.io.ResolverUtil;
+import org.apache.logging.log4j.message.LoggerNameAwareMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import peng.zhi.liu.pojo.*;
@@ -44,7 +45,16 @@ public class EmpController {
     //根据ID查询员工
     @GetMapping("/{id}")
     public Result selectEmpByIdController(@PathVariable Integer id){
+        log.info("根据ID查询回显:{}",id);
         Emp emp =  empService.selectEmpByIdService(id);
         return Result.success(emp);
+    }
+
+    //修改员工信息
+    @PutMapping
+    public Result updateEmpController(@RequestBody Emp emp){
+        log.info("修改员工信息：{}",emp);
+        empService.updateEmpService(emp);
+        return Result.success();
     }
 }

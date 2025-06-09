@@ -8,6 +8,22 @@
         insert into emp(username, name,gender, job, salary ,phone , image, entry_date, dept_id, create_time, update_time)
         values(#{username},#{name},#{gender},#{job},#{salary},#{phone},#{image},#{entryDate},#{deptId},#{createTime},#{updateTime})
     </insert>
+<!--    修改员工的基本信息-->
+    <update id="updateEmpBasicMapper">
+        update emp 
+        <set>
+            <if test="username!=null and username!=''">username = #{username},</if>
+            <if test="name!=null and name!=''">name = #{name},</if>
+            <if test="gender!=null">gender = #{gender},</if>
+            <if test="image!=null and image!=''">image = #{image},</if>
+            <if test="deptId!=null">dept_id = #{deptId},</if>
+            <if test="entryDate!=null">entry_date = #{entryDate},</if>
+            <if test="job!=null">job = #{job},</if>
+            <if test="salary!=null">salary = #{salary},</if>
+            <if test="updateTime!=null">update_time = #{updateTime}</if>
+        </set>
+        where id = #{id}
+    </update>
 
     <!--    分页查询员工-->
     <select id="selectEmpPageMapper" resultType="peng.zhi.liu.pojo.Emp">
@@ -25,8 +41,7 @@
     <select id="selectEmpByIdMapper" resultType="peng.zhi.liu.pojo.Emp">
          select emp.* from emp where id = #{id}
     </select>
-
-    <!--    批量删除员工-->
+<!--    批量删除员工-->
     <delete id="deleteEmpMapper">
     delete from emp where id in
         <foreach collection="ids" item="id" separator="," open="(" close=")">

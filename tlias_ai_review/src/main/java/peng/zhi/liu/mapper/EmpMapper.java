@@ -19,4 +19,6 @@ public interface EmpMapper {
     public void addEmpBasicMapper(Emp emp);
     //根据ID查询员工的基本信息
     public Emp selectEmpByIdMapper(Integer id);
+    //修改员工基本信息
+    public void updateEmpBasicMapper(Emp emp);
 }

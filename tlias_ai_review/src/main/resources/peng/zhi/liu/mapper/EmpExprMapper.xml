@@ -11,7 +11,11 @@
             (#{expr.empId},#{expr.begin},#{expr.end},#{expr.company},#{expr.job})
         </foreach>
     </insert>
-<!--    根据ID查询员工的基本信息-->
+<!--    根据员工ID删除员工的工作经历-->
+    <delete id="deleteExprByIdMapper">
+        delete from emp_expr where emp_id = #{empId}
+    </delete>
+    <!--    根据ID查询员工的基本信息-->
     <select id="selectEmpByIdMapper" resultType="peng.zhi.liu.pojo.EmpExpr">
         select * from emp_expr where emp_id = #{empId}
     </select>

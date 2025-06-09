@@ -68,4 +68,24 @@ public class EmpServiceImpl implements EmpService {
        emp.setExprList(empExprList);
        return emp;
     }
+
+    //修改员工信息
+    @Override
+    @Transactional(rollbackFor = {Exception.class})
+    public void updateEmpService(Emp emp) {
+        //更新员工信息的更新时间
+        emp.setUpdateTime(LocalDateTime.now());
+        //修改员工个人基本信息
+        empMapper.updateEmpBasicMapper(emp);
+        //删除员工的工作经历信息
+        empExprMapper.deleteExprByIdMapper(emp.getId());
+        //为员工工作经历中的员工ID重新赋值
+        if(!CollectionUtils.isEmpty(emp.getExprList())){
+            for(EmpExpr empExpr : emp.getExprList()){
+                empExpr.setEmpId(emp.getId());
+            }
+        }
+        //重新添加员工经历
+        empExprMapper.addEmpExprMapper(emp);
+    }
 }

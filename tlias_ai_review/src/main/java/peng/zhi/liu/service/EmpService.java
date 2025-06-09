@@ -16,4 +16,6 @@ public interface EmpService {
     public void addEmpService(Emp emp);
     //根据ID查询员工
     public Emp selectEmpByIdService(Integer id);
+    //修改员工信息
+    public void updateEmpService(Emp emp);
 }

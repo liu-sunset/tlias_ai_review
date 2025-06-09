@@ -13,4 +13,6 @@ public interface EmpExprMapper {
     public void addEmpExprMapper(Emp emp);
     //根据ID查询员工的工作经历信息
     public List<EmpExpr> selectEmpByIdMapper(Integer empId);
+    //根据ID删除员工的工作经历
+    public void deleteExprByIdMapper(Integer empId);
 }
