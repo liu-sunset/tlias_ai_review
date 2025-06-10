@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/ClazzMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/DeptMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/EmpExprMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/EmpMapper.xml" dialect="MySQL" />

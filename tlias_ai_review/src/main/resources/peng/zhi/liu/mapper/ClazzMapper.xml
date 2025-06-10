@@ -3,8 +3,30 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="peng.zhi.liu.mapper.ClazzMapper">
-
-<!--    分页查询-->
+<!--    添加班级-->
+    <insert id="addClazzMapper">
+        insert into clazz(name, room, begin_date, end_date, master_id, subject, create_time, update_time)
+        values(#{name},#{room},#{beginDate},#{endDate},#{masterId},#{subject},#{createTime},#{updateTime})
+    </insert>
+<!--    修改班级信息-->
+    <update id="modifyClazzMapper">
+        update clazz
+        <set>
+            <if test="name!=null and name!=''">name = #{name},</if>
+            <if test="room!=null and room!=''">room = #{room},</if>
+            <if test="beginDate!=null">begin_date = #{beginDate},</if>
+            <if test="endDate!=null">end_date = #{endDate},</if>
+            <if test="masterId!=null">master_id = #{masterId},</if>
+            <if test="subject!=null">subject = #{subject},</if>
+            <if test="updateTime!=null">update_time = #{updateTime}</if>
+        </set>
+        where id = #{id}
+    </update>
+    <!--    删除班级-->
+    <delete id="deleteClazzMapper">
+        delete from clazz where id = #{id}
+    </delete>
+    <!--    分页查询-->
     <select id="selectClazzPageMapper" resultType="peng.zhi.liu.pojo.Clazz">
         select * from clazz
         <where>
@@ -13,5 +35,13 @@
             <if test="end!=null">end_date&lt;=#{end}</if>
         </where>
         order by update_time desc
+    </select>
+<!--    根据ID查询班级-->
+    <select id="selectClazzByIdMapper" resultType="peng.zhi.liu.pojo.Clazz">
+        select * from clazz where id = #{id}
+    </select>
+<!--    查询所有班级-->
+    <select id="selectAllClazzMapper" resultType="peng.zhi.liu.pojo.Clazz">
+        select * from clazz
     </select>
 </mapper>
