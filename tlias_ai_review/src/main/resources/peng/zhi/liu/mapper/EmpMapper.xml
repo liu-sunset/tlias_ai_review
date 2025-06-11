@@ -41,7 +41,22 @@
     <select id="selectEmpByIdMapper" resultType="peng.zhi.liu.pojo.Emp">
          select emp.* from emp where id = #{id}
     </select>
-<!--    批量删除员工-->
+<!--    统计员工性别-->
+    <select id="empGenderStatMapper" resultType="java.util.Map">
+        select if(gender = 1,'男性员工','女性员工') name,count(*) value from emp group by gender
+    </select>
+<!--    统计员工职位信息-->
+    <select id="empDegreeStatMapper" resultType="java.util.Map">
+        select (case job
+            when 1 then '班主任'
+            when 2 then '讲师'
+            when 3 then '学工主管'
+            when 4 then '教研主任'
+            when 5 then '咨询师'
+            else '其他' end) name,count(*) value
+            from emp group by job order by value
+    </select>
+    <!--    批量删除员工-->
     <delete id="deleteEmpMapper">
     delete from emp where id in
         <foreach collection="ids" item="id" separator="," open="(" close=")">
