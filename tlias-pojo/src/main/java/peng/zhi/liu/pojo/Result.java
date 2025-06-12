@@ -23,17 +23,15 @@ public class Result {
     }
 
     public static Result success(Object data){
-        Result result = new Result();
-        result.code = 1;
-        result.msg = "success";
+        Result result = success();
         result.data = data;
         return result;
     }
 
-    public static Result error(){
+    public static Result error(String info){
         Result result = new Result();
         result.code = 0;
-        result.msg = "error";
+        result.msg = info;
         return result;
     }
 }

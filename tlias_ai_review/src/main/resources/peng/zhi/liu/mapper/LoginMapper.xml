@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="peng.zhi.liu.mapper.LoginMapper">
+
+<!--    用户登录请求-->
+    <select id="loginMapper" resultType="peng.zhi.liu.pojo.LoginInfo">
+        select id,username,name from emp where username = #{username} and password = #{password}
+    </select>
+</mapper>
