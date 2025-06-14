@@ -6,6 +6,7 @@ import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.extern.slf4j.Slf4j;
+import peng.zhi.liu.utils.CurrentHolder;
 import peng.zhi.liu.utils.JWT;
 
 import java.io.IOException;
@@ -37,6 +38,8 @@ public class TokenFilter implements Filter {
         //如果存在token，校验令牌,如果令牌错误，设置状态码为401
         try {
             Claims claims = JWT.parseJWT(token);
+            Integer id = Integer.valueOf(claims.get("id").toString());
+            CurrentHolder.setCurrentLocal(id);
         }catch(Exception e){
             log.info("令牌解析错误,登录失败");
             httpServletResponse.setStatus(401);
@@ -45,5 +48,6 @@ public class TokenFilter implements Filter {
         //令牌校验正确放行
         log.info("令牌解析正确，放行");
         filterChain.doFilter(servletRequest,servletResponse);
+        CurrentHolder.removeCurrentLocal();
     }
 }

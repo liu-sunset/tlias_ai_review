@@ -87,6 +87,11 @@
             <version>2.3.1</version>
         </dependency>
 
+<!--        AOP相关依赖-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
     </dependencies>
 
 
