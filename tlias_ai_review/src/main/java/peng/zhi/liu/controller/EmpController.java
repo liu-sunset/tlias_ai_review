@@ -5,6 +5,7 @@ import org.apache.ibatis.io.ResolverUtil;
 import org.apache.logging.log4j.message.LoggerNameAwareMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import peng.zhi.liu.anno.OperateLog;
 import peng.zhi.liu.pojo.*;
 import peng.zhi.liu.service.EmpService;
 
@@ -28,6 +29,7 @@ public class EmpController {
 
     //批量员工删除
     @DeleteMapping
+    @OperateLog
     public Result deleteEmpController(@RequestParam List<Integer> ids){
         log.info("批量删除员工：{}",ids);
         empService.deleteEmpService(ids);
@@ -36,6 +38,7 @@ public class EmpController {
 
     //添加员工
     @PostMapping
+    @OperateLog
     public Result addEmpController(@RequestBody Emp emp){
         log.info("添加员工：{}",emp);
         empService.addEmpService(emp);
@@ -52,6 +55,7 @@ public class EmpController {
 
     //修改员工信息
     @PutMapping
+    @OperateLog
     public Result updateEmpController(@RequestBody Emp emp){
         log.info("修改员工信息：{}",emp);
         empService.updateEmpService(emp);

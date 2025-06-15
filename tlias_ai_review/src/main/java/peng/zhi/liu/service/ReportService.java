@@ -1,7 +1,6 @@
 package peng.zhi.liu.service;
 
-import peng.zhi.liu.pojo.ClazzStudentCountData;
-import peng.zhi.liu.pojo.EmpJobData;
+import peng.zhi.liu.pojo.*;
 
 import java.util.List;
 import java.util.Map;
@@ -15,4 +14,6 @@ public interface ReportService {
     public List<Map<String,Object>> studentDegreeStatService();
     //班级人数统计
     public ClazzStudentCountData studentCountStatService();
+    //日志列表分页查询
+    public List<OperateLog> selectLogPageService(LogQueryParam logQueryParam);
 }

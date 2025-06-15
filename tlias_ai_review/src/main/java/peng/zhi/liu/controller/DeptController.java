@@ -4,6 +4,7 @@ package peng.zhi.liu.controller;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import peng.zhi.liu.anno.OperateLog;
 import peng.zhi.liu.pojo.Dept;
 import peng.zhi.liu.pojo.Result;
 import peng.zhi.liu.service.DeptService;
@@ -27,6 +28,7 @@ public class DeptController {
 
     //删除部门
     @DeleteMapping
+    @OperateLog
     public Result deleteDeptByIdController(Integer id){
         log.info("删除部门的id是：{}",id);
         deptService.deleteDeptByIdService(id);
@@ -35,6 +37,7 @@ public class DeptController {
 
     //添加部门
     @PostMapping
+    @OperateLog
     public Result addDeptController(@RequestBody Dept dept){
         log.info("添加部门:{}",dept.getName());
         deptService.addDeptService(dept);
@@ -51,6 +54,7 @@ public class DeptController {
 
     //修改部门
     @PutMapping
+    @OperateLog
     public Result modifyDeptController(@RequestBody Dept dept){
         log.info("修改部门：{}",dept);
         deptService.modifyDeptService(dept);

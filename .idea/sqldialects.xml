@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/EmpExprMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/EmpMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/LoginMapper.xml" dialect="MySQL" />
+    <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/OperateLogMapper.xml" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/tlias_ai_review/src/main/resources/peng/zhi/liu/mapper/StudentMapper.xml" dialect="MySQL" />
   </component>
 </project>
